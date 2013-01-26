@@ -46,6 +46,8 @@ gitignore = dirty
 fugitivepath = vim/bundle/vim-fugitive
 fugitiveurl = git://github.com/tpope/vim-fugitive.git
 gitignore = dirty
+	path = vim/bundle/vim-fugitive
+	url = http://github.com/tpope/vim-fugitive.git
 [submodule "vim/bundle/snipmate"]
 snipmatepath = vim/bundle/snipmate
 snipmateurl = git://github.com/msanders/snipmate.vim.git
@@ -58,6 +60,8 @@ gitignore = dirty
 javascriptpath = vim/bundle/vim-javascript
 javascripturl = http://github.com/pangloss/vim-javascript.git
 gitignore = dirty
+	path = vim/bundle/vim-javascript
+	url = http://github.com/pangloss/vim-javascript.git
 [submodule "vim/bundle/mac-classic"]
 classicpath = vim/bundle/mac-classic
 classicurl = git@github.com:nelstrom/vim-mac-classic-theme.git
