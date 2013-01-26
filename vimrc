@@ -9,6 +9,8 @@ runtime ftplugin/man.vim
 call pathogen#infect()
 call pathogen#helptags()
 
+map <C-n> :NERDTreeToggle<CR>
+
 " Autocommands {{{1
 if has("autocmd")
   filetype plugin indent on
@@ -226,8 +228,8 @@ let g:space_no_search = 1
 
 " Solarized {{{2
 let g:solarized_menu=0
-set background=light
-silent! colorscheme solarized
+set background=dark
+"silent! colorscheme solarized
 if exists('*togglebg#map')
   call togglebg#map("<F5>")
 endif
