@@ -12,6 +12,8 @@ running the commands:
 Create symlinks:
 
     ln -s ~/dotfiles/bashrc ~/.bashrc
+    ln -s ~/dotfiles/bash_aliases ~/.bash_aliases
+    ln -s ~/dotfiles/bash_profile ~/.bash_profile
     ln -s ~/dotfiles/vimrc ~/.vimrc
     ln -s ~/dotfiles/gvimrc ~/.gvimrc
     ln -s ~/dotfiles/irbrc ~/.irbrc
@@ -21,7 +23,7 @@ Create symlinks:
     ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
 
 I put Vim's backup and swap files in `~/tmp`, so that directory must exist. To
-be sure, run: 
+be sure, run:
 
     mkdir ~/tmp
 
@@ -44,7 +46,7 @@ This will update the `.gitmodules` file by appending something like:
     [submodule "vim/bundle/vim-javascript"]
         path = vim/bundle/vim-javascript
         url = http://github.com/pangloss/vim-javascript.git
-    
+
 As well as checkout out the git repo into the
 `vim/bundle/vim-javascript` directory. You can then commit these changes
 as follows:

@@ -1,72 +1,84 @@
-#echo "loading .bashrc"
-source ~/.profile
-
 # Bash customisations to be syncronised between machines.
 export PS1='\[\e[1;34m\][\u@\h \W]\$\[\e[0m\] '
 
-# History
-export HISTCONTROL=erasedups	# when adding an item to history, delete itentical commands upstream
-export HISTSIZE=10000		# save 10000 items in history
-shopt -s histappend		# append history to ~\.bash_history when exiting shell
+export LANGUAGE=en_US.UTF-8
+export LANG=$LANGUAGE
+export LC_ALL=$LANGUAGE
 
-# Lazy aliases
-alias l='ls -l'
-alias la='ls -Al'
-alias ..='cd ..'
-alias tree='tree -C'
-alias trls='tree -C | less -R'	# -C outputs colour, -R makes less understand color
-alias mode='(set -o | grep emacs.*on >/dev/null 2>&1 && echo "emacs mode" || echo "vi mode")'
+export WORKON_HOME=~/Envs
 
-# Rails aliases
-alias sc='./script/console'
-alias sg='./script/generate'
-alias ss='./script/server'
-alias sp='./script/server -e production'
-alias t='rake spec'
-alias ta='autotest -rails'
-alias m='rake db:migrate'
+# use vim as an editor
+export EDITOR=vim
 
-# SVN aliases
-alias svnadd="svn st | grep '^\?' | awk '{print $2}' | xargs svn add"
-alias svnrmd="svn st | grep '^\!' | awk '{print $2}' | xargs svn rm"
+export M2_HOME="/usr/local/apache-maven-3.0.4"
+export MAVEN_HOME=${M2_HOME}
+export M2=${M2_HOME}"/bin"
 
-# git aliases
-# http://titusd.co.uk/2010/08/29/use-g-as-an-alias-for-git-without-losing-autocompletion
-alias g='git'
+export ROO_HOME=/Users/ferdous/sdks/sts/spring-roo-1.2.3.RELEASE
+export ROO_OPTS="-Droo.bright=true"
+# export MAGICK_HOME=/usr/local/ImageMagick
+export GRADLE_HOME=/Users/ferdous/sdks/gradle-1.2
 
-# Vim aliases
-alias rvim='mvim --remote-silent '
+#export HADOOP_CONF_DIR=/Users/ferdous/.whirr/hdp-recommender
+export HADOOP_OPTS="-Djava.security.krb5.realm=OX.AC.UK -Djava.security.krb5.kdc=kdc0.ox.ac.uk:kdc1.ox.ac.uk"
+export HADOOP_HEAPSIZE=3000
+export HADOOP_CLASSPATH="/usr/local/hadoop-lzo/build/hadoop-lzo-0.4.15/hadoop-lzo-0.4.15.jar"
+export JAVA_LIBRARY_PATH="/usr/local/hadoop-lzo/build/hadoop-lzo-0.4.15/lib/native/Mac_OS_X-x86_64-64:/usr/local/hadoop/lib/native/Mac_OS_X-x86_64-64"
 
-# Set terminal colors when launching screen
-alias tmux="TERM=screen-256color-bce tmux"
+export HADOOP_HOME=/usr/local/hadoop
+export MAHOUT_HOME=/usr/local/mahout
+export MAHOUT_VERSION=0.6
+export HIVE_HOME=/usr/local/hive/build/dist
+export PIGDIR=/Users/ferdous/Apache/pig
+export PIG_HOME=$PIGDIR
+export WHIRR_HOME=/usr/local/whirr
+export SCALA_HOME=/Users/ferdous/sdks/scala-2.9.2
+export JBOSS_HOME=/Users/ferdous/sdks/jboss-as-7.1.1.Final
 
-# Functions
-# Fuzzy cd
-# Usage:
-#    cdf public
-# Changes to repos-public directory.
-# http://dpaste.org/P59h/
-function cdf() {
-  cd *$1*/
+export PATH=$PATH:~/code/ruby/metasploit-framework:~/sdks/gsutil:$JBOSS_HOME/bin:$GRADLE_HOME/bin:$SCALA_HOME/bin:$HADOOP_HOME/bin:$MAHOUT_HOME/bin:$HIVE_HOME/bin:$WHIRR_HOME/bin:${PIGDIR}/bin:${ROO_HOME}/bin:$M2
+
+# Some convenient aliases and functions for running Hadoop-related commands
+unalias fs &> /dev/null
+alias fs="hadoop fs"
+unalias hls &> /dev/null
+alias hls="fs -ls"
+
+# If you have LZO compression enabled in your Hadoop cluster and
+# compress job outputs with LZOP (not covered in this tutorial):
+# Conveniently inspect an LZOP compressed file from the command
+# line; run via:
+#
+# $ lzohead /hdfs/path/to/lzop/compressed/file.lzo
+#
+# Requires installed 'lzop' command.
+#
+lzohead () {
+    hadoop fs -cat $1 | lzop -dc | head -1000 | less
 }
+# export MAVEN_OPTS=-Xmx1024m
+export MAVEN_OPTS="-Xmx1024m -XX:MaxPermSize=512m"
+PIG_OPTS="-Dmapred.child.java.opts=-Xmx1024m"
+export PIG_OPTS
 
-# Reload .bashrc
-alias refresh='. ~/.bashrc'
+export ERL_ROOT=/usr/local/lib/erlang
+export PATH=/Applications/SenchaSDKTools-2.0.0-Developer-Preview:$PATH
+export PATH=/Applications/SenchaSDKTools-2.0.0-Developer-Preview/command:$PATH
+export PATH=/Applications/SenchaSDKTools-2.0.0-Developer-Preview/jsbuilder:$PATH
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
+export IDEA_HOME="/Applications/IntelliJ\ IDEA\ 11\ CE.app/"
+export JETTY_HOME=/Users/ferdous/sdks/jetty
+export PATH=$JETTY_HOME/bin:$PATH
+export AS_HOME=/Users/ferdous/sdks/glassfish3
+export ZOO_HOME="/Users/ferdous/code/java/zookeeper-3.4.3"
+export PATH=$ZOO_HOME/bin:$PATH
+export COBERTURA_HOME=/Users/ferdous/sdks/cobertura-1.9.4.1
+export AKKA_HOME=/Users/ferdous/sdks/akka-2.0.3
 
-export PATH=/Developer/Applications/Sencha:$PATH
-export PATH=/Developer/Applications/Sencha/command:$PATH
-export PATH=/Developer/Applications/Sencha/jsbuilder:$PATH
-
-export PATH=/Developer/Applications/SenchaSDKTools-2.0.0-beta3:$PATH
-
+PATH=$PATH:$HOME/.local/bin:$ROO_HOME/bin:$AKKA_HOME/bin # Add RVM to PATH for scripting
+export PATH=/Applications/SenchaSDKTools-2.0.0-beta3:$PATH
 export SENCHA_SDK_TOOLS_2_0_0_BETA3="/Applications/SenchaSDKTools-2.0.0-beta3"
 
-export PATH=/Applications/SenchaSDKTools-2.0.0-beta3:$PATH
+. ~/.z.sh
 
-export PATH=/Users/drew/bin/Sencha/Cmd/3.0.0.188:$PATH
 
-export SENCHA_CMD_3_0_0="/Users/drew/bin/Sencha/Cmd/3.0.0.188"
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
