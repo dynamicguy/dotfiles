@@ -79,6 +79,7 @@ PATH=$PATH:$HOME/.local/bin:$ROO_HOME/bin:$AKKA_HOME/bin # Add RVM to PATH for s
 export PATH=/Applications/SenchaSDKTools-2.0.0-beta3:$PATH
 export SENCHA_SDK_TOOLS_2_0_0_BETA3="/Applications/SenchaSDKTools-2.0.0-beta3"
 
+export DJANGO_COLORS="dark;error=yellow/blue,blink;notice=magenta"
 . ~/.z.sh
 
 
