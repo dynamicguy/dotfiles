@@ -245,3 +245,4 @@ let g:markdown_fenced_languages = ['cpp', 'python']
 " Ctlr-P {{{2
 let g:ctrlp_jump_to_buffer = 0
 let g:ctrlp_working_path_mode = 0
+set pastetoggle=<F10>
